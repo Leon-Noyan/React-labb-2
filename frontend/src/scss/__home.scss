@@ -1,0 +1,70 @@
+@use "__variables" as v;
+@use "__mixins" as m;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  margin: 0;
+}
+
+.Background {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .text-container {
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 100%;
+        backdrop-filter: blur(4px);
+        border-radius: 4px;
+    }
+
+    h1 {
+        font-size: 4rem;
+        margin-bottom: 0.5rem;
+        margin-left: 1rem;
+        color: v.$primary-color;
+    }
+
+    h2 {
+        font-size: 2rem;
+        max-width: 700px;
+        margin-left: 2.5rem ;
+        margin-bottom: 0.5rem;
+        color: v.$primary-color;
+    }
+
+
+}
+
+.Future-destinations {
+
+      h3 {
+        color: v.$secondary-color;
+        font-size: 2rem;
+        margin-left: 2.5rem;
+        margin-top: 2rem;
+      }
+    }
+
+    .list-destinations {
+      @include m.card-grid;
+
+      .destination-card {
+        @include m.country-card-style;
+
+        .removeBtn {
+          background-color: red;
+
+        }
+      }
+    }

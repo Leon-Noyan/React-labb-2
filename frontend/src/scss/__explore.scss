@@ -1,0 +1,19 @@
+@use "__variables" as v;
+@use "__mixins" as m;
+
+.Country-list {
+  @include m.card-grid;
+
+  .country-cards {
+    @include m.country-card-style;
+
+    
+  }
+}
+
+#Explore-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: v.$spacing;
+}

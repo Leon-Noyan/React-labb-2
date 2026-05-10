@@ -1,0 +1,51 @@
+@use "__variables" as v;
+
+@mixin flex-row ($justify: space-between) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+}
+
+@mixin country-card-style {
+  border: 1.5px solid #665f5f;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgb(255, 255, 255);
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    }
+
+    img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-bottom: 1px solid #c4c1c1;
+    }
+
+    h3, p {
+      padding: 0.2rem 1rem;
+    }
+
+    button {
+      background-color: rgb(204, 174, 66);
+          color: rgb(0, 0, 0);
+          border: 1px solid black;
+          border-radius: 4px;
+          padding: 0.2rem 0.5rem;
+          cursor: pointer;
+          align-self: flex-start;
+          margin-left: 1rem;
+          margin-bottom: 0.3rem;
+    }
+}
+
+@mixin card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: v.$spacing;
+  padding: v.$spacing;
+}

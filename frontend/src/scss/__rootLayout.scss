@@ -1,0 +1,38 @@
+@use "__variables" as v;
+@use "__mixins" as m;
+
+.navbar {
+  @include m.flex-row;
+  padding: 1rem 2rem !important;
+  
+  top: 0;
+
+  .logo {
+    color: v.$secondary-color;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .navbar-links {
+   @include m.flex-row;
+   gap: 0.5rem;
+   font-size: 1.2rem;
+
+   a {
+    text-decoration: none;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &.active {
+      border-bottom: 2px solid rgb(221, 157, 39);
+    }
+   }
+  }
+}
+
+.root-layout {
+  background-color: v.$primary-color;
+}
