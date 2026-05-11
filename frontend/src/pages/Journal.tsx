@@ -110,7 +110,7 @@ function Journal() {
             <h1>My Journal</h1>
 
             {!openForm && (
-                <button onClick={() => setOpenForm(true)}>Add Memory</button>
+                <button className='btn-add' onClick={() => setOpenForm(true)}>Add Memory</button>
             )}
 
             {openForm && (
@@ -139,10 +139,10 @@ function Journal() {
                                 onChange={handleImageChange}
                                 value={imageFile === null ? '' : undefined}
                             />
-                            <button type="submit">
+                            <button className='btn-submit' type="submit">
                                 {editingId ? 'Update Memory' : 'Create Memory'}
                             </button>
-                            <button
+                            <button className='btn-cancel'
                                 type="button"
                                 onClick={() => {
                                     setEditingId(null)
@@ -168,10 +168,10 @@ function Journal() {
                             <h3>{memory.country}</h3>
                             <p>{memory.city}</p>
                             <p>{memory.description}</p>
-                            <button onClick={() => handleEdit(memory.id)}>
+                            <button className='btn-edit' onClick={() => handleEdit(memory.id)}>
                                 Edit
                             </button>
-                            <button onClick={() => handleDelete(memory.id)}>
+                            <button className='btn-delete' onClick={() => handleDelete(memory.id)}>
                                 Delete
                             </button>
                         </div>

@@ -1,0 +1,31 @@
+@use "sass:map";
+
+$journal-colors: (
+  add: #2e7d32,
+  edit: #f9a825,
+  submit: #258cd5,
+  delete: #d32f2f,
+  cancel: #616161
+);
+
+$journal-ui: (
+  radius: 14px,
+  card-padding: 1rem,
+  gap: 1rem
+);
+
+.btn-base {
+  border: none;
+  border-radius: map.get($journal-ui, radius);
+  padding: 0.5rem 0.9rem;
+  margin-right: 0.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+@each $name, $color in $journal-colors {
+  .btn-#{$name} {
+    @extend .btn-base;
+    background-color: $color;
+  }
+}
