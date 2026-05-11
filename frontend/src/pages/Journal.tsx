@@ -18,6 +18,8 @@ function Journal() {
     const [imageFile, setImageFile] = useState<File | null>(null)
     const [editingId, setEditingId] = useState<string | null>(null)
 
+    const [openForm, setOpenForm] = useState(false)
+
     useEffect(() => {
         fetchJournalMemories()
     }, [])
@@ -48,8 +50,9 @@ function Journal() {
             setCity(response.data.city)
             setDescription(response.data.description)
             setEditingId(id)
+            setOpenForm(true)
 
-            window.scrollTo({top: 0, behavior: 'smooth'})
+            window.scrollTo({ top: 0, behavior: 'smooth' })
         } catch (error) {
             console.error('Error editing memory:', error)
         }
@@ -96,6 +99,7 @@ function Journal() {
             setDescription('')
             setImageFile(null)
             setEditingId(null)
+            setOpenForm(false)
         } catch (error) {
             console.error('Error submitting memory:', error)
         }
@@ -105,43 +109,56 @@ function Journal() {
         <div className="Home-page">
             <h1>My Journal</h1>
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Country"
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="City"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                />
-                <textarea
-                    placeholder="Description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
-                <input type="file" onChange={handleImageChange}
-                value={imageFile === null ? '' : undefined}
-                />
-                <button type="submit">
-                    {editingId ? 'Update Memory' : 'Create Memory'}
-                </button>
-                <button
-                    type="button"
-                    onClick={() => {
-                        setEditingId(null)
-                        setCountry('')
-                        setCity('')
-                        setDescription('')
-                        setImageFile(null)
-                    }}
-                >
-                    Clear
-                </button>
-            </form>
+            {!openForm && (
+                <button onClick={() => setOpenForm(true)}>Add Memory</button>
+            )}
+
+            {openForm && (
+                <div className="Journal-form">
+                    <div className="form-card">
+                        <form onSubmit={handleSubmit}>
+                            <input
+                                type="text"
+                                placeholder="Country"
+                                value={country}
+                                onChange={(e) => setCountry(e.target.value)}
+                            />
+                            <input
+                                type="text"
+                                placeholder="City"
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                            />
+                            <textarea
+                                placeholder="Description"
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                            />
+                            <input
+                                type="file"
+                                onChange={handleImageChange}
+                                value={imageFile === null ? '' : undefined}
+                            />
+                            <button type="submit">
+                                {editingId ? 'Update Memory' : 'Create Memory'}
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setEditingId(null)
+                                    setCountry('')
+                                    setCity('')
+                                    setDescription('')
+                                    setImageFile(null)
+                                    setOpenForm(false)
+                                }}
+                            >
+                                Cancel
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            )}
 
             <div className="Documented-memories">
                 {memories.map((memory) => (
@@ -151,9 +168,9 @@ function Journal() {
                             <h3>{memory.country}</h3>
                             <p>{memory.city}</p>
                             <p>{memory.description}</p>
-                            <button
-                                onClick={() => handleEdit(memory.id)}
-                            >Edit</button>
+                            <button onClick={() => handleEdit(memory.id)}>
+                                Edit
+                            </button>
                             <button onClick={() => handleDelete(memory.id)}>
                                 Delete
                             </button>
