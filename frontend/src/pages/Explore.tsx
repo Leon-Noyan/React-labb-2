@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { SearchBar } from '../components/searchBar'
+import { useDebounce } from '../Hooks/use-debounce'
 
 interface ExploreProps {
     onSave: (countryName: string, flagUrl: string) => void
@@ -23,6 +24,8 @@ function Explore({ onSave }: ExploreProps) {
     const [countries, setCountries] = useState<Country[]>([])
     const [search, setSearch] = useState('')
 
+    const debouncedSearch = useDebounce(search, 500)
+
     useEffect(() => {
         const fetchCountryData = async () => {
             try {
@@ -39,7 +42,7 @@ function Explore({ onSave }: ExploreProps) {
     }, [])
 
     const filteredCountries = countries.filter((country) =>
-        country.name.common.toLowerCase().includes(search.toLowerCase())
+        country.name.common.toLowerCase().includes(debouncedSearch.toLowerCase())
     )
     return (
         <div className="Home-page">
