@@ -43,9 +43,11 @@ function Explore({ onSave }: ExploreProps) {
     )
     return (
         <div className="Home-page">
-            <h1 id="Explore-title">Explore</h1>
+          <div className='Explore-header'>
+            <h1>Explore</h1>
 
             <SearchBar search={search} setSearch={setSearch} />
+            </div>
 
             <div className="Country-list">
                 {filteredCountries.map((country, index) => (

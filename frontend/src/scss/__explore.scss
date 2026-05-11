@@ -7,13 +7,37 @@
   .country-cards {
     @include m.country-card-style;
 
-    
+
   }
 }
 
-#Explore-title {
+.Explore-header {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  padding: 1rem 2rem;
   margin-bottom: v.$spacing;
+  min-height: 80px;
+
+  h1 {
+    margin: 0;
+    text-align: center;
+    flex: 1;
+  }
+  .search-container {
+    position: absolute;
+    right: 2rem;
+
+    input {
+      padding: 0.5rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      outline: none;
+
+      &:focus {
+      border-color: v.$secondary-color;
+      }
+    }
+  }
 }

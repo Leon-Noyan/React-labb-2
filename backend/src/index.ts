@@ -60,7 +60,7 @@ app.post(
         }
 
         memories.push(newMemory)
-        return res.json({ newMemory })
+        return res.json(newMemory)
     }
 )
 
