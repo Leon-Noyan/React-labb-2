@@ -107,7 +107,7 @@ function Journal() {
 
     return (
         <div className="Home-page">
-            <h1>My Journal</h1>
+            <h1 className='Journal-header'>My Travel Journal</h1>
 
             {!openForm && (
                 <button className='btn-add' onClick={() => setOpenForm(true)}>Add Memory</button>

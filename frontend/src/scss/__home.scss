@@ -63,8 +63,13 @@ body {
         @include m.country-card-style;
 
         .removeBtn {
-          background-color: red;
+          background-color: v.$tertiary-color;
+          color: white;
 
+        }
+
+        .removeBtn:hover {
+          color: v.$secondary-color;
         }
       }
     }

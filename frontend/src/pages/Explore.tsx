@@ -33,7 +33,7 @@ function Explore({ onSave }: ExploreProps) {
                     'https://restcountries.com/v3.1/all?fields=name,capital,currencies,flags'
                 )
                 setCountries(response.data)
-                console.log(response.data)
+                
             } catch (error) {
                 console.error('Error fetching country data:', error)
             }
