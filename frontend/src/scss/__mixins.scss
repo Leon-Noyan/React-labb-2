@@ -15,7 +15,6 @@
 
     &:hover {
       transform: scale(1.05);
-      cursor: pointer;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
     }
 
@@ -31,8 +30,8 @@
     }
 
     button {
-      background-color: rgb(204, 174, 66);
-          color: rgb(0, 0, 0);
+      background-color: #333232;
+          color: white;
           border: 1px solid black;
           border-radius: 4px;
           padding: 0.2rem 0.5rem;
@@ -40,6 +39,16 @@
           align-self: flex-start;
           margin-left: 1rem;
           margin-bottom: 0.3rem;
+
+          &:hover {
+            transform: scale(1.05);
+            font-weight: bold;
+          }
+
+          &:active {
+            transform: scale(0.96) translateY(1px);
+            opacity: 1;
+          }
     }
 }
 
