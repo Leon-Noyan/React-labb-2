@@ -38,9 +38,9 @@ $journal-ui: (
   padding: 0.5rem 0.9rem;
   margin-right: 0.5rem;
   cursor: pointer;
-  
+
   font-family: inherit;
-  color: white;
+  color: v.$primary-color;
   transition: transform 0.1s ease, opacity 0.1s ease;
 
   &:hover {
@@ -62,15 +62,13 @@ $journal-ui: (
   }
 }
 
-// `country-card-style` styles nested `button` with higher specificity than `.btn-*`
-// alone, so card/form journal buttons kept the mixin look. Match `.btn-base` / Add Memory.
 .Documented-memories-card button.btn-edit,
 .Documented-memories-card button.btn-delete,
 .Journal-form .form-card form button.btn-submit,
 .Journal-form .form-card form button.btn-cancel {
   border-radius: map.get($journal-ui, radius);
   border: none;
-  color: white;
+  color: v.$primary-color;
   padding: 0.5rem 0.9rem;
   margin-right: 0.5rem;
   margin-left: 0;
@@ -89,11 +87,9 @@ $journal-ui: (
       cursor: default;
     }
 
-
     .Documented-memories-card-content {
       display: flex;
       flex-direction: column;
-
 
       .btn-container {
         @include m.flex-row(flex-start);

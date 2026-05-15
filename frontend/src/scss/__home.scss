@@ -43,7 +43,6 @@ body {
         color: v.$primary-color;
     }
 
-
 }
 
 .Future-destinations {
@@ -56,17 +55,17 @@ body {
       }
       .list-destinations {
         @include m.card-grid;
-  
+
         .destination-card {
           @include m.country-card-style;
-  
+
           .removeBtn {
-            background-color: #333232;
+            background-color: v.$teternary-color;
             color: v.$primary-color;
           }
-  
+
           .removeBtn:hover {
-            
+
             transform: scale(1.05); // add this to variables
             font-weight: bold;
           }
@@ -76,7 +75,5 @@ body {
             opacity: 1;
           }
     }
-
-    
-      }
-    }
+  }
+}
