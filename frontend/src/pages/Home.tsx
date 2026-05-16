@@ -1,5 +1,5 @@
 import backgroundImg from './../assets/travel-backgroundImg.jpg'
-import type { CountryDestination } from '../App'
+import type { CountryDestination } from '../types/destination'
 
 interface HomeProps {
     savedFutureDestinations?: CountryDestination[]

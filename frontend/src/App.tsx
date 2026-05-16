@@ -1,15 +1,10 @@
-import './App.css'
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import RootLayout from './layout/RootLayout'
 import Home from './pages/Home'
 import Explore from './pages/Explore'
 import Journal from './pages/Journal'
-
-export interface CountryDestination {
-    name: string
-    flag: string
-}
+import type { CountryDestination } from './types/destination'
 
 function App() {
     const [savedFutureDestinations, setSavedFutureDestinations] = useState<
