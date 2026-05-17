@@ -4,7 +4,7 @@
 .navbar {
   @include m.flex-row;
   padding: 1rem 2rem !important;
-  
+  justify-content: space-between;
   top: 0;
 
   .logo {
@@ -21,6 +21,7 @@
    a {
     text-decoration: none;
     transition: opacity 0.2s;
+    white-space: nowrap;
 
     &:hover {
       opacity: 0.5;

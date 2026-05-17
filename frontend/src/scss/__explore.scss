@@ -16,9 +16,9 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 1rem 2rem;
+  padding: v.$spacing 2rem;
   margin-bottom: v.$spacing;
-  min-height: 80px;
+  gap: 1rem;
 
   h1 {
     margin: 0;
@@ -27,7 +27,7 @@
   }
   .search-container {
     position: absolute;
-    right: 2rem;
+    right: 3rem;
 
     input {
       padding: 0.5rem 1rem;
