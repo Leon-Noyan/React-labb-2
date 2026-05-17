@@ -23,6 +23,11 @@
       height: 150px;
       object-fit: cover;
       border-bottom: 1px solid #c4c1c1;
+
+      @media (max-width: 768px) {
+        height: 250px;
+      }
+      
     }
 
     h3, p {

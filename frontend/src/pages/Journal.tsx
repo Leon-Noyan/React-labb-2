@@ -16,7 +16,9 @@ function Journal() {
     const [country, setCountry] = useState('')
     const [description, setDescription] = useState('')
     const [imageFile, setImageFile] = useState<File | null>(null)
+    const [inputFileKey, setInputFileKey] = useState(0)
     const [editingId, setEditingId] = useState<string | null>(null)
+
 
     const [openForm, setOpenForm] = useState(false)
 
@@ -48,7 +50,9 @@ function Journal() {
             )
             setCountry(response.data.country)
             setCity(response.data.city)
-            setDescription(response.data.description)
+            setDescription(response.data.description ?? '')
+            setImageFile(null)
+            setInputFileKey((key) => key + 1)
             setEditingId(id)
             setOpenForm(true)
 
@@ -98,6 +102,7 @@ function Journal() {
             setCity('')
             setDescription('')
             setImageFile(null)
+            setInputFileKey((key) => key + 1)
             setEditingId(null)
             setOpenForm(false)
         } catch (error) {
@@ -137,7 +142,7 @@ function Journal() {
                             <input
                                 type="file"
                                 onChange={handleImageChange}
-                                value={imageFile === null ? '' : undefined}
+                                key={inputFileKey}
                             />
                             <button className='btn-submit' type="submit">
                                 {editingId ? 'Update Memory' : 'Create Memory'}
@@ -150,6 +155,7 @@ function Journal() {
                                     setCity('')
                                     setDescription('')
                                     setImageFile(null)
+                                    setInputFileKey((key) => key + 1)
                                     setOpenForm(false)
                                 }}
                             >
