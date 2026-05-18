@@ -62,21 +62,6 @@ $journal-ui: (
   }
 }
 
-.Documented-memories-card button.btn-edit,
-.Documented-memories-card button.btn-delete,
-.Journal-form .form-card form button.btn-submit,
-.Journal-form .form-card form button.btn-cancel {
-  border-radius: map.get($journal-ui, radius);
-  border: none;
-  color: v.$primary-color;
-  padding: 0.5rem 0.9rem;
-  margin-right: 0.5rem;
-  margin-left: 0;
-  margin-bottom: 0;
-  cursor: pointer;
-  font-family: inherit;
-}
-
 .Documented-memories {
   @include m.card-grid;
 
@@ -85,6 +70,12 @@ $journal-ui: (
 
     &:hover {
       cursor: default;
+    }
+
+    button.btn-edit,
+    button.btn-delete {
+      @extend .btn-base;
+
     }
 
     .Documented-memories-card-content {
@@ -122,6 +113,14 @@ $journal-ui: (
       display: flex;
       flex-direction: column;
       gap: 1rem;
+
+      button.btn-submit,
+      button.btn-cancel {
+        @extend .btn-base;
+        margin-left: 0;
+        margin-bottom: 0;
+  
+      }
 
 
       textarea {

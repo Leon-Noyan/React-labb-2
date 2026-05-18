@@ -7,19 +7,20 @@ interface ExploreProps {
     onSave: (countryName: string, flagUrl: string) => void
 }
 
-function Explore({ onSave }: ExploreProps) {
-    interface Country {
-        name: {
-            common: string
-        }
-        capital: string[]
-        currencies: Record<string, { name: string; symbol: string }>
-        flags: {
-            png: string
-            svg: string
-            alt: string
-        }
+interface Country {
+    name: {
+        common: string
     }
+    capital: string[]
+    currencies: Record<string, { name: string; symbol: string }>
+    flags: {
+        png: string
+        svg: string
+        alt: string
+    }
+}
+
+function Explore({ onSave }: ExploreProps) {
 
     const [countries, setCountries] = useState<Country[]>([])
     const [search, setSearch] = useState('')

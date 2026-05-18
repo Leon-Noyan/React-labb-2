@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { ChangeEvent, FormEvent } from 'react'
 import axios from 'axios'
 
@@ -18,7 +18,6 @@ function Journal() {
     const [imageFile, setImageFile] = useState<File | null>(null)
     const [inputFileKey, setInputFileKey] = useState(0)
     const [editingId, setEditingId] = useState<string | null>(null)
-
 
     const [openForm, setOpenForm] = useState(false)
 
