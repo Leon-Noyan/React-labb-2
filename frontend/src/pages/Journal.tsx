@@ -11,16 +11,19 @@ interface Memory {
 }
 
 function Journal() {
+    // states
     const [memories, setMemories] = useState<Memory[]>([])
     const [city, setCity] = useState('')
     const [country, setCountry] = useState('')
     const [description, setDescription] = useState('')
     const [imageFile, setImageFile] = useState<File | null>(null)
+
+    // Ran into an error so we inputFileKey to reset the file upload input to empty
     const [inputFileKey, setInputFileKey] = useState(0)
     const [editingId, setEditingId] = useState<string | null>(null)
-
     const [openForm, setOpenForm] = useState(false)
 
+    // fetches memories from the backend
     useEffect(() => {
         fetchJournalMemories()
     }, [])
@@ -41,7 +44,7 @@ function Journal() {
             setImageFile(event.target.files[0])
         }
     }
-
+    // handles editing a memory
     const handleEdit = async (id: string) => {
         try {
             const response = await axios.get(
@@ -50,6 +53,8 @@ function Journal() {
             setCountry(response.data.country)
             setCity(response.data.city)
             setDescription(response.data.description ?? '')
+
+            // The backend keeps the image until the user adds a new one
             setImageFile(null)
             setInputFileKey((key) => key + 1)
             setEditingId(id)
@@ -61,6 +66,7 @@ function Journal() {
         }
     }
 
+    // handles deleting a memory
     const handleDelete = async (id: string) => {
         try {
             await axios.delete(`http://localhost:3000/api/memories/${id}`)
@@ -70,6 +76,7 @@ function Journal() {
         }
     }
 
+    // handles submitting a new memory
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
@@ -97,6 +104,7 @@ function Journal() {
             }
             fetchJournalMemories()
 
+            // reset form fields
             setCountry('')
             setCity('')
             setDescription('')

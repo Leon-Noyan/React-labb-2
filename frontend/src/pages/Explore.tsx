@@ -25,8 +25,9 @@ function Explore({ onSave }: ExploreProps) {
     const [countries, setCountries] = useState<Country[]>([])
     const [search, setSearch] = useState('')
 
+    // Debounce to avoid array filter too often
     const debouncedSearch = useDebounce(search, 500)
-
+    // fetch country list from API
     useEffect(() => {
         const fetchCountryData = async () => {
             try {
@@ -34,14 +35,14 @@ function Explore({ onSave }: ExploreProps) {
                     'https://restcountries.com/v3.1/all?fields=name,capital,currencies,flags'
                 )
                 setCountries(response.data)
-                
+
             } catch (error) {
                 console.error('Error fetching country data:', error)
             }
         }
         fetchCountryData()
     }, [])
-
+    // filter countries based on search
     const filteredCountries = countries.filter((country) =>
         country.name.common.toLowerCase().includes(debouncedSearch.toLowerCase())
     )

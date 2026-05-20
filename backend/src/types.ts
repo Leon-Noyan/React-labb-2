@@ -1,4 +1,3 @@
-
 export interface MemoryI {
     id: string,
     country: string,
