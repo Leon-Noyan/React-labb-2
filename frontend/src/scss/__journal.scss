@@ -3,8 +3,6 @@
 @use "__explore" as e;
 @use "__variables" as v;
 
-
-
 $journal-colors: (
   add: #2e7d32,
   edit: #509bbe,
@@ -119,7 +117,7 @@ $journal-ui: (
         @extend .btn-base;
         margin-left: 0;
         margin-bottom: 0;
-  
+
       }
 
 

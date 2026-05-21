@@ -18,7 +18,7 @@ function Home({ savedFutureDestinations, onRemove }: HomeProps) {
                 aria-label="Background image that consists of the world map"
             >
                 <div hidden aria-hidden="true">
-                    Image taken from Unsplash.com by Charlotte Noelle
+                    Image taken from unsplash.com by Charlotte Noelle
                 </div>
                 <div className="text-container">
                     <h1>Travel Memories</h1>
