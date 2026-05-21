@@ -8,14 +8,18 @@ interface HomeProps {
 
 function Home({ savedFutureDestinations, onRemove }: HomeProps) {
     if (!savedFutureDestinations) {
-      return null
+        return null
     }
     return (
         <div className="Home-page">
             <div
                 className="Background"
                 style={{ backgroundImage: `url(${backgroundImg})` }}
+                aria-label="Background image that consists of the world map"
             >
+                <div hidden aria-hidden="true">
+                    Image taken from Unsplash.com by Charlotte Noelle
+                </div>
                 <div className="text-container">
                     <h1>Travel Memories</h1>
                     <h2>
@@ -26,21 +30,28 @@ function Home({ savedFutureDestinations, onRemove }: HomeProps) {
             </div>
             <div className="Future-destinations">
                 <h3>My Future destinations</h3>
-                <div className='list-destinations'>
+                <div className="list-destinations">
                     {savedFutureDestinations.length > 0 ? (
-                    savedFutureDestinations.map((destination, index) => (
-                        <div key={index} className="destination-card">
-                            <img src={destination.flag} alt={destination.name} />
-                            <p>{destination.name}</p>
-                            <button className='removeBtn' onClick={() => onRemove(destination.name)}>Remove</button>
-                        </div>
+                        savedFutureDestinations.map((destination, index) => (
+                            <div key={index} className="destination-card">
+                                <img
+                                    src={destination.flag}
+                                    alt={destination.name}
+                                />
+                                <p>{destination.name}</p>
+                                <button
+                                    className="removeBtn"
+                                    onClick={() => onRemove(destination.name)}
+                                >
+                                    Remove
+                                </button>
+                            </div>
                         ))
-                      ): (
-                          <p className='emptyMsg'>No destinations saved yet</p>
-                      )}
+                    ) : (
+                        <p className="emptyMsg">No destinations saved yet</p>
+                    )}
                 </div>
             </div>
-
         </div>
     )
 }
