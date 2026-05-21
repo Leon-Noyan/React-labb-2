@@ -18,7 +18,7 @@ function Journal() {
     const [description, setDescription] = useState('')
     const [imageFile, setImageFile] = useState<File | null>(null)
 
-    // Ran into an error so we inputFileKey to reset the file upload input to empty
+    // inputFileKey state to reset the file upload input to empty
     const [inputFileKey, setInputFileKey] = useState(0)
     const [editingId, setEditingId] = useState<string | null>(null)
     const [openForm, setOpenForm] = useState(false)
@@ -54,7 +54,7 @@ function Journal() {
             setCity(response.data.city)
             setDescription(response.data.description ?? '')
 
-            // The backend keeps the image until the user adds a new one
+            // backend keeps the image until the user adds a new one
             setImageFile(null)
             setInputFileKey((key) => key + 1)
             setEditingId(id)

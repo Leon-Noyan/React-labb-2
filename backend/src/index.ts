@@ -38,13 +38,12 @@ const storage = multer.diskStorage({
     },
     filename: (_req, file, cb) => {
         // generate a unique filename with timestamp and random num for the uploaded file
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9)
-        const ext = path.extname(file.originalname)
-        cb(null, `image-${uniqueSuffix}${ext}`)
+        const uniqueId = Date.now() + '-' + Math.round(Math.random() * 1e9)
+        const extensionFile = path.extname(file.originalname)
+        cb(null, `image-${uniqueId}${extensionFile}`)
     }
 })
 
-// multer middleware
 const upload = multer({ storage: storage })
 
 // Creates/ posts a new memory and handles image upload
